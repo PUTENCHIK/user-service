@@ -1,0 +1,37 @@
+2024-04-29 18:56:34,657 — logger1 — INFO — Start logging
+2024-04-29 18:56:35,671 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:36,678 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:37,692 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:37,759 — logger2 — INFO — Start logging
+2024-04-29 18:56:38,703 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:39,720 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:39,768 — logger2 — INFO — Keeping logging
+2024-04-29 18:56:40,729 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:41,729 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:41,775 — logger2 — INFO — Keeping logging
+2024-04-29 18:56:42,733 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:43,748 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:43,779 — logger2 — INFO — Keeping logging
+2024-04-29 18:56:44,764 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:45,774 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:45,790 — logger2 — INFO — Keeping logging
+2024-04-29 18:56:46,786 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:47,788 — logger1 — INFO — Keeping logging
+2024-04-29 18:56:47,804 — logger2 — INFO — Keeping logging
+2024-04-29 18:56:48,039 — logger1 — ERROR — KeyboardInterrupt
+2024-04-29 18:56:48,040 — logger1 — INFO — End logging
+2024-04-29 18:56:49,540 — logger2 — ERROR — KeyboardInterrupt
+2024-04-29 18:56:49,540 — logger2 — INFO — End logging
+2024-04-29 20:14:45,291 — logger1 — INFO — Start logging - 127.0.0.1
+2024-04-29 20:14:46,294 — logger1 — INFO — Keeping logging - 127.0.0.1
+2024-04-29 20:14:47,299 — logger1 — INFO — Keeping logging - 127.0.0.1
+2024-04-29 20:14:48,308 — logger1 — INFO — Keeping logging - 127.0.0.1
+2024-04-29 20:14:49,281 — logger1 — ERROR — KeyboardInterrupt - 127.0.0.1
+2024-04-29 20:14:49,281 — logger1 — INFO — End logging - 127.0.0.1
+2024-04-29 20:17:13,382 — logger1 — INFO — Start logging - 26.111.49.12
+2024-04-29 20:17:14,382 — logger1 — INFO — Keeping logging - 26.111.49.12
+2024-04-29 20:17:15,390 — logger1 — INFO — Keeping logging - 26.111.49.12
+2024-04-29 20:17:16,399 — logger1 — INFO — Keeping logging - 26.111.49.12
+2024-04-29 20:17:17,410 — logger1 — INFO — Keeping logging - 26.111.49.12
+2024-04-29 20:17:17,816 — logger1 — ERROR — KeyboardInterrupt - 26.111.49.12
+2024-04-29 20:17:17,816 — logger1 — INFO — End logging - 26.111.49.12
