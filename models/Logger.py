@@ -6,7 +6,7 @@ class Logger:
     FORMATTER_STRING = f"%(asctime)s — {socket.gethostbyname(socket.gethostname())} — %(name)s" \
                        f" — %(levelname)s — %(message)s"
     FORMATTER = logging.Formatter(FORMATTER_STRING)
-    LOG_FILE = "../logs.log"
+    LOG_FILE = "logs.log"
 
     def __init__(self, name: str):
         logger = logging.getLogger(name)
@@ -16,7 +16,7 @@ class Logger:
         stdout_handler.setFormatter(Logger.FORMATTER)
 
         file_handler = TimedRotatingFileHandler(Logger.LOG_FILE, when='midnight')
-        stdout_handler.setFormatter(Logger.FORMATTER)
+        file_handler.setFormatter(Logger.FORMATTER)
 
         logger.addHandler(stdout_handler)
         logger.addHandler(file_handler)

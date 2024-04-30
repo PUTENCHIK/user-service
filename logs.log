@@ -1,37 +1,14 @@
-2024-04-29 18:56:34,657 Ч logger1 Ч INFO Ч Start logging
-2024-04-29 18:56:35,671 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:36,678 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:37,692 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:37,759 Ч logger2 Ч INFO Ч Start logging
-2024-04-29 18:56:38,703 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:39,720 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:39,768 Ч logger2 Ч INFO Ч Keeping logging
-2024-04-29 18:56:40,729 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:41,729 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:41,775 Ч logger2 Ч INFO Ч Keeping logging
-2024-04-29 18:56:42,733 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:43,748 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:43,779 Ч logger2 Ч INFO Ч Keeping logging
-2024-04-29 18:56:44,764 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:45,774 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:45,790 Ч logger2 Ч INFO Ч Keeping logging
-2024-04-29 18:56:46,786 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:47,788 Ч logger1 Ч INFO Ч Keeping logging
-2024-04-29 18:56:47,804 Ч logger2 Ч INFO Ч Keeping logging
-2024-04-29 18:56:48,039 Ч logger1 Ч ERROR Ч KeyboardInterrupt
-2024-04-29 18:56:48,040 Ч logger1 Ч INFO Ч End logging
-2024-04-29 18:56:49,540 Ч logger2 Ч ERROR Ч KeyboardInterrupt
-2024-04-29 18:56:49,540 Ч logger2 Ч INFO Ч End logging
-2024-04-29 20:14:45,291 Ч logger1 Ч INFO Ч Start logging - 127.0.0.1
-2024-04-29 20:14:46,294 Ч logger1 Ч INFO Ч Keeping logging - 127.0.0.1
-2024-04-29 20:14:47,299 Ч logger1 Ч INFO Ч Keeping logging - 127.0.0.1
-2024-04-29 20:14:48,308 Ч logger1 Ч INFO Ч Keeping logging - 127.0.0.1
-2024-04-29 20:14:49,281 Ч logger1 Ч ERROR Ч KeyboardInterrupt - 127.0.0.1
-2024-04-29 20:14:49,281 Ч logger1 Ч INFO Ч End logging - 127.0.0.1
-2024-04-29 20:17:13,382 Ч logger1 Ч INFO Ч Start logging - 26.111.49.12
-2024-04-29 20:17:14,382 Ч logger1 Ч INFO Ч Keeping logging - 26.111.49.12
-2024-04-29 20:17:15,390 Ч logger1 Ч INFO Ч Keeping logging - 26.111.49.12
-2024-04-29 20:17:16,399 Ч logger1 Ч INFO Ч Keeping logging - 26.111.49.12
-2024-04-29 20:17:17,410 Ч logger1 Ч INFO Ч Keeping logging - 26.111.49.12
-2024-04-29 20:17:17,816 Ч logger1 Ч ERROR Ч KeyboardInterrupt - 26.111.49.12
-2024-04-29 20:17:17,816 Ч logger1 Ч INFO Ч End logging - 26.111.49.12
+2024-04-30 10:56:23,847 Ч 192.168.56.1 Ч publisher Ч INFO Ч Connecting to broker: broker.emqx.io
+2024-04-30 10:56:24,027 Ч 192.168.56.1 Ч publisher Ч INFO Ч Connection to broker: MQTTErrorCode.MQTT_ERR_SUCCESS
+2024-04-30 10:58:07,017 Ч 192.168.56.1 Ч publisher Ч INFO Ч Connecting to broker: broker.emqx.io
+2024-04-30 10:58:07,866 Ч 192.168.56.1 Ч publisher Ч INFO Ч Connection to broker: MQTTErrorCode.MQTT_ERR_SUCCESS
+2024-04-30 10:58:07,866 Ч 192.168.56.1 Ч publisher Ч INFO Ч Start publisher loop
+2024-04-30 10:58:07,879 Ч 192.168.56.1 Ч publisher Ч INFO Ч Publish message: “ы сможешь!
+2024-04-30 10:58:08,900 Ч 192.168.56.1 Ч publisher Ч INFO Ч Publish message: “ы смог!
+2024-04-30 10:58:08,901 Ч 192.168.56.1 Ч publisher Ч INFO Ч Stop publisher loop
+2024-04-30 11:21:24,802 Ч 192.168.56.1 Ч userservice Ч INFO Ч Creating uuid
+2024-04-30 11:21:24,804 Ч 192.168.56.1 Ч userservice Ч DEBUG Ч Uuid: e2...e2984ab02cd3b6498d5475b52ba1f0
+2024-04-30 11:21:24,804 Ч 192.168.56.1 Ч userservice Ч INFO Ч Returning uuid
+2024-04-30 11:21:46,626 Ч 192.168.56.1 Ч userservice Ч INFO Ч Creating uuid
+2024-04-30 11:21:46,626 Ч 192.168.56.1 Ч userservice Ч DEBUG Ч Uuid: 29...0e
+2024-04-30 11:21:46,627 Ч 192.168.56.1 Ч userservice Ч INFO Ч Returning uuid

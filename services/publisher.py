@@ -16,9 +16,9 @@ import random
 
 broker = "broker.emqx.io"
 
-# client = mqtt_client.Client('isu100123234235')
+# client = mqtt_client.MyClient('isu100123234235')
 # FOR new version change ABOVE line to
-client = mqtt_client.Client(
+client = mqtt_client.MyClient(
    mqtt_client.CallbackAPIVersion.VERSION1,
    'isu1001230012312312'
 )
