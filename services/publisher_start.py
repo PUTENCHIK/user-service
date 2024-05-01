@@ -1,7 +1,9 @@
-import uvicorn, socket
-from publisher import port
+import uvicorn
+from src.config import config
+from src.connections import get_ip
 
 
-host = socket.gethostbyname(socket.gethostname())
+host = get_ip()
+port = config["publisher_port"]
 
-uvicorn.run("publisher:app", host="0.0.0.0", port=port)
+uvicorn.run("publisher:app", host=host, port=port)

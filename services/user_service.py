@@ -5,12 +5,10 @@ from models.UserService import UserService
 app = FastAPI()
 service = UserService()
 # router_name = "/userservice"
-port = 5001
 
 
 @app.get("/")
 def root():
-    service.logger.add_info("")
     return {"message": "Go to /get_uuid to get unique user id"}
 
 

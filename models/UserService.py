@@ -1,4 +1,5 @@
-import datetime, hashlib
+import datetime
+import hashlib
 from secrets import token_hex
 from models.Logger import Logger
 

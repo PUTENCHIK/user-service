@@ -1,6 +1,8 @@
-from models.Publisher import Publisher
-from models.UserService import UserService
+import time
 
-
-service = UserService()
-print(service.create_uuid())
+# try:
+#     while True:
+#         time.sleep(1)
+#         print("Point")
+# except KeyboardInterrupt:
+#     print("Breaked")

@@ -1,32 +1,25 @@
-import paho.mqtt.client as mqtt_client
+import time
 from models.MyClient import MyClient
-from models.Logger import Logger
+from src.config import config
 
 
 class Publisher(MyClient):
     def __init__(self):
-        self.logger = Logger("publisher")
-
-        client = mqtt_client.Client(
-            mqtt_client.CallbackAPIVersion.VERSION1,
-            Publisher.get_uuid()
-        )
-        self.logger.add_info("Connecting to broker: " + Publisher.broker)
-        self.connection = str(client.connect(Publisher.broker))
-        self.logger.add_info("Connection to broker: " + self.connection)
-
-        self.client = client
-
-    def start(self):
-        self.logger.add_info("Start publisher loop")
-        self.client.loop_start()
-
-    def stop(self):
-        self.logger.add_info("Stop publisher loop")
-        self.client.disconnect()
-        self.client.loop_stop()
+        super(Publisher, self).__init__("publisher")
+        self.connect()
 
     def publish(self, text: str):
-        length_limit = 15
-        self.logger.add_info("Publish message: " + (text if len(text) <= length_limit else text[:length_limit]+"..."))
-        self.client.publish(text)
+        # length_limit = 15
+        # self.logger.add_info("Published message: " + (text if len(text) <= length_limit else text[:length_limit]+"..."))
+        self.logger.add_info("Published message: " + text)
+        self.client.publish(Publisher.path, text)
+
+    def simulate(self):
+        self.logger.add_debug(f"Start simulating work by publisher")
+        try:
+            while True:
+                delay = Publisher.random_publish_delay()
+                time.sleep(delay)
+                self.publish(f"some test text for delay {delay}")
+        except KeyboardInterrupt:
+            self.logger.add_error(f"Simulating was canceled")

@@ -1,7 +1,9 @@
-import uvicorn, socket
-from user_service import port
+import uvicorn
+from src.config import config
+from src.connections import get_ip
 
 
-host = socket.gethostbyname(socket.gethostname())
+host = get_ip()
+port = config["user_service_port"]
 
-uvicorn.run("user_service:app", host="0.0.0.0", port=port)
+uvicorn.run("user_service:app", host=host, port=port)
