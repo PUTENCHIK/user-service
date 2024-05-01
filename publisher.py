@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.exceptions import FastAPIError
 from models.Publisher import Publisher
 
 
@@ -10,15 +11,22 @@ def root():
     return {"message": "Hello on publisher!"}
 
 
+@app.exception_handler(FastAPIError)
+async def exception_handler(request: Request, exc: Exception):
+    print(f"Exception: {exc}")
+
+
 @app.on_event("startup")
 def start_app():
-    try:
-        publisher = Publisher()
-        publisher.start()
-        publisher.simulate()
-        publisher.stop()
-    except:
-        exit()
+    publisher = Publisher()
+    publisher.start()
+    publisher.simulate()
+    publisher.stop()
+
+
+@app.on_event("shutdown")
+def stop_app():
+    pass
 
 # publisher
 # import time

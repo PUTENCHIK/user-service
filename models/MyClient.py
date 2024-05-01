@@ -1,7 +1,7 @@
 import random
 import requests
 import paho.mqtt.client as mqtt_client
-from fastapi import HTTPException
+from fastapi.exceptions import FastAPIError
 from typing import Optional
 
 from models.Logger import Logger
@@ -21,7 +21,7 @@ class MyClient:
             uuid = self.get_uuid()
         else:
             self.logger.add_error("UserClient doesn't answer")
-            raise Exception()
+            raise FastAPIError("UserClient doesn't answer")
 
         client = mqtt_client.Client(
             mqtt_client.CallbackAPIVersion.VERSION1,
