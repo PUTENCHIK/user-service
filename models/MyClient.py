@@ -1,9 +1,10 @@
 import random
 import requests
 import paho.mqtt.client as mqtt_client
+from fastapi import HTTPException
 from typing import Optional
-from models.Logger import Logger
 
+from models.Logger import Logger
 from src.config import config
 from src.connections import get_ip
 
@@ -16,10 +17,11 @@ class MyClient:
         self.logger_name = logger_name
         self.logger = Logger(logger_name)
 
-        uuid = self.get_uuid()
-        while uuid is None or not MyClient.check_connection():
-            self.logger.add_warning("Client can't get uuid")
+        if MyClient.check_connection():
             uuid = self.get_uuid()
+        else:
+            self.logger.add_error("Client can't get uuid")
+            raise HTTPException(status_code=404, detail="Client can't get uuid")
 
         client = mqtt_client.Client(
             mqtt_client.CallbackAPIVersion.VERSION1,
