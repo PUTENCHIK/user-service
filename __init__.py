@@ -1,3 +1,1 @@
-import models
-import src
-import services
+from models import *
