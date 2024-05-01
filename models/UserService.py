@@ -9,13 +9,13 @@ class UserService:
         self.logger = Logger("userservice")
 
     def create_uuid(self) -> str:
-        self.logger.add_info("Creating uuid")
+        self.logger.add_debug("Creating uuid")
 
         start_token = token_hex(12)
         token = start_token + str(datetime.datetime.now())
         token = hashlib.md5(token.encode()).hexdigest()
 
-        self.logger.add_debug("Uuid: " + token[:2] + "..." + token[-2:])
-        self.logger.add_info("Returning uuid")
+        self.logger.add_info("Uuid: " + token[:2] + "..." + token[-2:])
+        self.logger.add_debug("Returning uuid")
 
         return token

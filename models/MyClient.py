@@ -20,8 +20,8 @@ class MyClient:
         if MyClient.check_connection():
             uuid = self.get_uuid()
         else:
-            self.logger.add_error("Client can't get uuid")
-            raise HTTPException(status_code=404, detail="Client can't get uuid")
+            self.logger.add_error("UserClient doesn't answer")
+            raise Exception()
 
         client = mqtt_client.Client(
             mqtt_client.CallbackAPIVersion.VERSION1,
@@ -77,7 +77,3 @@ class MyClient:
             return True
         except:
             return False
-
-    def simulate(self):
-        pass
-

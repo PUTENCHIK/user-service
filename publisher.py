@@ -12,14 +12,13 @@ def root():
 
 @app.on_event("startup")
 def start_app():
-    publisher = Publisher()
-    publisher.start()
     try:
+        publisher = Publisher()
+        publisher.start()
         publisher.simulate()
-    except KeyboardInterrupt:
-        publisher.logger.add_error(f"Simulating was canceled")
-
-    publisher.stop()
+        publisher.stop()
+    except:
+        exit()
 
 # publisher
 # import time
