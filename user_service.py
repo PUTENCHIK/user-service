@@ -24,7 +24,8 @@ def get_uuid():
     return {"uuid": service.create_uuid()}
 
 
-@app.get("/start")
+# @app.get("/start")
+@app.on_event("startup")
 def start():
     publisher = Publisher()
     service.logger.add_debug("Publisher object created")
