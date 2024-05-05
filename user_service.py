@@ -27,7 +27,6 @@ def get_uuid():
 @app.get("/start")
 # @app.on_event("startup")
 def start():
-    yield {"message": "simulation is going"}
     try:
         publisher = Publisher()
         service.logger.add_debug("Publisher object created")
