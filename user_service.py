@@ -14,19 +14,28 @@ service = UserService()
 # router_name = "/userservice"
 
 
+def message(text: str) -> dict:
+    return {"message": text}
+
+
 @app.get("/")
 def root():
-    return {"message": "Go to /get_uuid to get unique user id"}
+    return message("Go to /get_uuid to get unique user id")
 
 
 @app.get("/get_uuid")
 def get_uuid():
-    return {"uuid": service.create_uuid()}
+    return message(service.create_uuid())
 
 
 @app.get("/start")
+def start_without():
+    return message("Go to /start/{amount} to start simulation")
+
+
+@app.get("/start/{amount}")
 # @app.on_event("startup")
-def start():
+def start(amount: int):
     try:
         publisher = Publisher()
         service.logger.add_debug("Publisher object created")
@@ -42,11 +51,11 @@ def start():
         return
 
     try:
-        publisher.simulate()
+        publisher.simulate(amount)
     except:
         service.logger.add_error("Simulation was stopped")
 
-    return {"message": "simulation ended"}
+    return message("Simulation ended")
 
 
 if __name__ == "__main__":

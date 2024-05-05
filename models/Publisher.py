@@ -14,11 +14,11 @@ class Publisher(MyClient):
         self.logger.add_info("Published message: " + text)
         self.client.publish(Publisher.path, text)
 
-    def simulate(self):
+    def simulate(self, amount: int = 5):
         self.logger.add_debug(f"Start simulating work by publisher")
         try:
             self.start()
-            for _ in range(20):
+            for _ in range(amount):
                 delay = Publisher.random_publish_delay()
                 time.sleep(delay)
                 self.publish(f"some test text for delay {delay}")
