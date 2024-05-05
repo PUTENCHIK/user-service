@@ -22,6 +22,9 @@ class Publisher(MyClient):
                 delay = Publisher.random_publish_delay()
                 time.sleep(delay)
                 self.publish(f"some test text for delay {delay}")
-        except KeyboardInterrupt:
+        except:
             self.logger.add_error(f"Simulating was canceled")
+            self.stop()
+        finally:
+            self.logger.add_info("Simulating ended")
             self.stop()

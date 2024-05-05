@@ -27,6 +27,7 @@ def get_uuid():
 @app.get("/start")
 # @app.on_event("startup")
 def start():
+    yield {"message": "simulation is going"}
     try:
         publisher = Publisher()
         service.logger.add_debug("Publisher object created")
@@ -41,12 +42,17 @@ def start():
         service.logger.add_error("Impossible to create Publisher")
         return
 
-    publisher.simulate()
+    try:
+        publisher.simulate()
+    except:
+        service.logger.add_error("Simulation was stopped")
+
+    return {"message": "simulation ended"}
 
 
 if __name__ == "__main__":
     try:
         uvicorn.run(app, host="0.0.0.0", port=config['user_service_port'],)
         service.logger.add_info("Normal stop app")
-    except KeyboardInterrupt:
+    except:
         service.logger.add_error("Force stop app")
