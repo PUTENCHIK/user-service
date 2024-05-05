@@ -36,7 +36,7 @@ def start():
 
 if __name__ == "__main__":
     try:
-        uvicorn.run(app, host=get_ip(), port=config['user_service_port'], )
+        uvicorn.run(app, host="0.0.0.0", port=config['user_service_port'],)
         service.logger.add_info("Normal stop app")
     except KeyboardInterrupt:
         service.logger.add_error("Force stop app")
