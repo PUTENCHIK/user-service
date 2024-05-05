@@ -49,9 +49,11 @@ class MyClient:
 
         ip_service = get_ip()
         port = config['user_service_port']
+        url = f"http://{ip_service}:{port}/get_uuid"
+        self.logger.add_debug(f"Try to request: {url}")
 
         try:
-            response = requests.get(f"http://{ip_service}:{port}/get_uuid")
+            response = requests.get(url)
         except:
             self.logger.add_error("No response from UserService's /get_uuid")
             return None

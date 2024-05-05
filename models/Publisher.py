@@ -17,9 +17,11 @@ class Publisher(MyClient):
     def simulate(self):
         self.logger.add_debug(f"Start simulating work by publisher")
         try:
-            while True:
+            self.start()
+            for _ in range(20):
                 delay = Publisher.random_publish_delay()
                 time.sleep(delay)
                 self.publish(f"some test text for delay {delay}")
         except KeyboardInterrupt:
             self.logger.add_error(f"Simulating was canceled")
+            self.stop()

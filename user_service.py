@@ -1,6 +1,12 @@
-from fastapi import FastAPI
+import uvicorn
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+
+from src.config import config
+from src.connections import get_ip
 from models.UserService import UserService
-# from ..models.UserService import UserService
+from models.Publisher import Publisher
+from models.Subscriber import Subscriber
 
 
 app = FastAPI()
@@ -16,3 +22,21 @@ def root():
 @app.get("/get_uuid")
 def get_uuid():
     return {"uuid": service.create_uuid()}
+
+
+@app.get("/start")
+def start():
+    publisher = Publisher()
+    service.logger.add_debug("Publisher object created")
+    subscriber = Subscriber()
+    service.logger.add_debug("Subscriber object created")
+
+    publisher.simulate()
+
+
+if __name__ == "__main__":
+    try:
+        uvicorn.run(app, host=get_ip(), port=config['user_service_port'], )
+        service.logger.add_info("Normal stop app")
+    except KeyboardInterrupt:
+        service.logger.add_error("Force stop app")
