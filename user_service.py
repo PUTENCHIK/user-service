@@ -1,6 +1,6 @@
 import uvicorn
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI
+from fastapi.exceptions import FastAPIError
 
 from src.config import config
 from src.connections import get_ip
@@ -24,13 +24,22 @@ def get_uuid():
     return {"uuid": service.create_uuid()}
 
 
-# @app.get("/start")
-@app.on_event("startup")
+@app.get("/start")
+# @app.on_event("startup")
 def start():
-    publisher = Publisher()
-    service.logger.add_debug("Publisher object created")
-    subscriber = Subscriber()
-    service.logger.add_debug("Subscriber object created")
+    try:
+        publisher = Publisher()
+        service.logger.add_debug("Publisher object created")
+    except FastAPIError:
+        service.logger.add_error("Impossible to create Publisher")
+        return
+
+    try:
+        subscriber = Subscriber()
+        service.logger.add_debug("Subscriber object created")
+    except FastAPIError:
+        service.logger.add_error("Impossible to create Publisher")
+        return
 
     publisher.simulate()
 
