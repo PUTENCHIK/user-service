@@ -36,40 +36,45 @@ def start_without():
 @app.get("/start/{amount}")
 # @app.on_event("startup")
 def start(amount: int):
-    try:
-        publisher = Publisher()
-        service.logger.add_debug("Publisher object created")
-    except FastAPIError:
-        service.logger.add_error("Impossible to create Publisher")
-        return
+    service.subscriber.start()
+    service.subscriber.subscribe()
+    service.publisher.simulate(amount)
 
-    try:
-        subscriber = Subscriber()
-        service.logger.add_debug("Subscriber object created")
-    except FastAPIError:
-        service.logger.add_error("Impossible to create Publisher")
-        return
-
-    try:
-        subscriber.start()
-        subscriber.subscribe()
-        # subscriber.simulate(0)
-        publisher.simulate(amount)
-    except:
-        service.logger.add_error("Simulation was stopped")
-
-    subscriber.stop()
-
-    del publisher
-    del subscriber
+    service.subscriber.stop()
+    # try:
+    #     publisher = Publisher()
+    #     service.logger.add_debug("Publisher object created")
+    # except FastAPIError:
+    #     service.logger.add_error("Impossible to create Publisher")
+    #     return
+    #
+    # try:
+    #     subscriber = Subscriber()
+    #     service.logger.add_debug("Subscriber object created")
+    # except FastAPIError:
+    #     service.logger.add_error("Impossible to create Publisher")
+    #     return
+    #
+    # try:
+    #     subscriber.start()
+    #     subscriber.subscribe()
+    #     # subscriber.simulate(0)
+    #     publisher.simulate(amount)
+    # except:
+    #     service.logger.add_error("Simulation was stopped")
+    #
+    # subscriber.stop()
+    #
+    # del publisher
+    # del subscriber
 
     return message("Simulation ended")
 
 
-if __name__ == "__main__":
-    try:
-        service.logger.add_info("Starting app")
-        uvicorn.run(app, host="0.0.0.0", port=config['user_service_port'],)
-        service.logger.add_info("Normal stop app")
-    except:
-        service.logger.add_error("Force stop app")
+# if __name__ == "__main__":
+#     try:
+#         service.logger.add_info("Starting app")
+#         uvicorn.run(app, host="0.0.0.0", port=config['user_service_port'],)
+#         service.logger.add_info("Normal stop app")
+#     except:
+#         service.logger.add_error("Force stop app")
