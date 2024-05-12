@@ -11,12 +11,12 @@ class UserService:
     def __init__(self):
         self.logger = Logger("userservice")
 
-    def add(self):
-        self.publisher = Publisher()
-        self.logger.add_debug("Publisher created")
-
-        self.subscriber = Subscriber()
-        self.logger.add_debug("Subscriber created")
+    # def add(self):
+    #     self.publisher = Publisher()
+    #     self.logger.add_debug("Publisher created")
+    #
+    #     self.subscriber = Subscriber()
+    #     self.logger.add_debug("Subscriber created")
 
     def create_uuid(self) -> str:
         self.logger.add_debug("Creating uuid")

@@ -11,6 +11,8 @@ from models.Subscriber import Subscriber
 
 app = FastAPI()
 service = UserService()
+publisher = None
+subscriber = None
 # router_name = "/userservice"
 
 
@@ -36,17 +38,16 @@ def start_without():
 @app.get("/start/{amount}")
 # @app.on_event("startup")
 def start(amount: int):
-    try:
-        service.publisher
-        service.subscriber
-    except AttributeError:
-        service.add()
+    global publisher, subscriber
+    if publisher is None:
+        publisher = Publisher()
 
-    service.subscriber.start()
-    service.subscriber.subscribe()
+    if subscriber is None:
+        subscriber = Subscriber()
+        service.subscriber.start()
+        service.subscriber.subscribe()
+
     service.publisher.simulate(amount)
-
-    service.subscriber.stop()
     # try:
     #     publisher = Publisher()
     #     service.logger.add_debug("Publisher object created")
