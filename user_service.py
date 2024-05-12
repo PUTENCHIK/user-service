@@ -50,8 +50,6 @@ def start(amount: int):
     subscriber.start()
 
     publisher.simulate(amount)
-
-    subscriber.stop()
     # try:
     #     publisher = Publisher()
     #     service.logger.add_debug("Publisher object created")

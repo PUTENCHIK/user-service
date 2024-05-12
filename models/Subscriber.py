@@ -16,6 +16,9 @@ class Subscriber(MyClient):
         self.logger.add_debug(f"Subscribing on {Subscriber.path}")
         self.client.subscribe(Subscriber.path)
 
+    # def stop(self):
+    #
+
     def simulate(self, delay: int = 0):
         self.start()
         self.subscribe()
