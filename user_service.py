@@ -45,7 +45,7 @@ def start(amount: int):
     if subscriber is None:
         subscriber = Subscriber()
 
-    subscriber.connect()
+    # subscriber.connect()
     subscriber.start()
     subscriber.subscribe()
     publisher.simulate(amount)
