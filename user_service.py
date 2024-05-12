@@ -16,21 +16,25 @@ def message(text: str) -> dict:
 
 @app.get("/")
 def root():
+    service.logger.add_debug("Request to app's root")
     return message("Go to /get_uuid to get unique user id")
 
 
 @app.get("/get_uuid")
 def get_uuid():
+    service.logger.add_debug("Request to app's /get_uuid")
     return {"uuid": service.create_uuid()}
 
 
 @app.get("/start")
 def start_without():
+    service.logger.add_warning("Bad usage of /start/{amount}")
     return message("Go to /start/{amount} to start simulation")
 
 
 @app.get("/start/{amount}")
 def start(amount: int):
+    service.logger.add_debug("Request to app's /start/{amount}")
     try:
         publisher = Publisher(service.starts_amount)
         service.logger.add_debug("Publisher object created")
@@ -60,12 +64,3 @@ def start(amount: int):
     service.starts_amount += 1
 
     return message("Simulation ended")
-
-
-# if __name__ == "__main__":
-#     try:
-#         service.logger.add_info("Starting app")
-#         uvicorn.run(app, host="0.0.0.0", port=config['user_service_port'],)
-#         service.logger.add_info("Normal stop app")
-#     except:
-#         service.logger.add_error("Force stop app")

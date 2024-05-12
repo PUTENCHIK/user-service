@@ -1,4 +1,5 @@
 import time
+from random import choice
 from models.MyClient import MyClient
 
 
@@ -17,11 +18,22 @@ class Publisher(MyClient):
             self.start()
             for _ in range(amount):
                 delay = Publisher.random_publish_delay()
+                self.logger.add_debug(f"Delay for publish: {delay}")
                 time.sleep(delay)
-                self.publish(f"some test text for delay {delay}")
+                self.publish(Publisher.random_message())
         except KeyboardInterrupt:
             self.logger.add_error(f"Simulating was canceled")
             self.stop()
         finally:
             self.logger.add_info("Simulating ended")
             self.stop()
+
+    @staticmethod
+    def random_message() -> str:
+        adjectives = "Healing Iron Magic Dragon Wraith Aether Phase Power Solar Blood " \
+                     "Sacred Guardian Silver Swift Arcane Vengeful Ancient Bounty".split()
+        nouns = "Mage Spirit Back Knight Fiend Ranger Void Protector Destroyer Assassin Lancer Queen".split()
+        verbs = "goes catches pushes splits pulls feeds".split()
+        places = "mid bottom top fountain highground tormentor ancient roshpit".split()
+
+        return f"{choice(adjectives)} {choice(nouns)} {choice(verbs)} {choice(places)}."

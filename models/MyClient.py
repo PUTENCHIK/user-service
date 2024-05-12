@@ -30,9 +30,9 @@ class MyClient:
         self.client = client
 
     def connect(self):
-        self.logger.add_info("Connecting to broker: " + MyClient.broker)
+        self.logger.add_debug("Connecting to broker: " + MyClient.broker)
         connection = self.client.connect(MyClient.broker)
-        self.logger.add_info("Connection to broker: " + str(connection))
+        self.logger.add_debug("Connection: " + str(connection))
 
     def start(self):
         self.logger.add_info(f"Start {self.logger_name} loop")
