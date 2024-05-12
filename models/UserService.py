@@ -3,20 +3,12 @@ import hashlib
 from secrets import token_hex
 
 from models.Logger import Logger
-from models.Publisher import Publisher
-from models.Subscriber import Subscriber
 
 
 class UserService:
     def __init__(self):
         self.logger = Logger("userservice")
-
-    # def add(self):
-    #     self.publisher = Publisher()
-    #     self.logger.add_debug("Publisher created")
-    #
-    #     self.subscriber = Subscriber()
-    #     self.logger.add_debug("Subscriber created")
+        self.starts_amount = 0
 
     def create_uuid(self) -> str:
         self.logger.add_debug("Creating uuid")
