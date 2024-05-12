@@ -1,9 +1,6 @@
-import uvicorn
 from fastapi import FastAPI
 from fastapi.exceptions import FastAPIError
 
-from src.config import config
-from src.connections import get_ip
 from models.UserService import UserService
 from models.Publisher import Publisher
 from models.Subscriber import Subscriber
@@ -11,7 +8,6 @@ from models.Subscriber import Subscriber
 
 app = FastAPI()
 service = UserService()
-# router_name = "/userservice"
 
 
 def message(text: str) -> dict:
@@ -34,7 +30,6 @@ def start_without():
 
 
 @app.get("/start/{amount}")
-# @app.on_event("startup")
 def start(amount: int):
     try:
         publisher = Publisher(service.starts_amount)
@@ -53,7 +48,6 @@ def start(amount: int):
     try:
         subscriber.start()
         subscriber.subscribe()
-        # subscriber.simulate(0)
         publisher.simulate(amount)
     except:
         service.logger.add_error("Simulation was stopped")

@@ -1,4 +1,3 @@
-import time
 from models.MyClient import MyClient
 
 
@@ -15,13 +14,3 @@ class Subscriber(MyClient):
     def subscribe(self):
         self.logger.add_debug(f"Subscribing on {Subscriber.path}")
         self.client.subscribe(Subscriber.path)
-
-    def simulate(self, delay: int = 0):
-        self.start()
-        self.subscribe()
-        try:
-            time.sleep(delay)
-            self.logger.add_info("Subscriber ended simulation")
-        except:
-            self.stop()
-            self.logger.add_error("Subscriber's simulation stopped by force")
