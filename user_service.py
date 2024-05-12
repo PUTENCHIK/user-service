@@ -44,10 +44,10 @@ def start(amount: int):
 
     if subscriber is None:
         subscriber = Subscriber()
-        service.subscriber.start()
-        service.subscriber.subscribe()
+        subscriber.start()
+        subscriber.subscribe()
 
-    service.publisher.simulate(amount)
+    publisher.simulate(amount)
     # try:
     #     publisher = Publisher()
     #     service.logger.add_debug("Publisher object created")
