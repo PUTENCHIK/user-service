@@ -36,6 +36,12 @@ def start_without():
 @app.get("/start/{amount}")
 # @app.on_event("startup")
 def start(amount: int):
+    try:
+        service.publisher
+        service.subscriber
+    except AttributeError:
+        service.add()
+
     service.subscriber.start()
     service.subscriber.subscribe()
     service.publisher.simulate(amount)
