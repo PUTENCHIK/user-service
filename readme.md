@@ -26,6 +26,7 @@ pip install fastapi paho-mqtt 'uvicorn[all]' requests
 5. Clone git repository:
 ```bash
 git clone -b master https://github.com/PUTENCHIK/user-service.git
+cd user-service
 ```
 
 5. Start app
