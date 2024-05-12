@@ -51,9 +51,14 @@ def start(amount: int):
         return
 
     try:
+        subscriber.start()
+        subscriber.subscribe()
+        subscriber.simulate(0)
         publisher.simulate(amount)
     except:
         service.logger.add_error("Simulation was stopped")
+
+    subscriber.stop()
 
     return message("Simulation ended")
 
