@@ -18,9 +18,9 @@ class Publisher(MyClient):
             self.start()
             for _ in range(amount):
                 delay = Publisher.random_publish_delay()
-                self.logger.add_debug(f"Delay for publish: {delay}")
-                time.sleep(delay)
                 self.publish(Publisher.random_message())
+                self.logger.add_debug(f"After publish delay: {delay}")
+                time.sleep(delay)
         except KeyboardInterrupt:
             self.logger.add_error(f"Simulating was canceled")
             self.stop()
