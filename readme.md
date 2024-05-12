@@ -36,7 +36,7 @@ python3 user_service_start.py
 ```
 * Using uvicorn:
 ```bash
-uvinorn user_serice:app --host 0.0.0.0 --port 5001
+uvicorn user_service:app --host 0.0.0.0 --port 5001
 ```
 
 ## Usage
