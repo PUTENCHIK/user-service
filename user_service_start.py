@@ -9,4 +9,8 @@ host = get_ip()
 port = config["user_service_port"]
 #
 # uvicorn.run("user_service:app", host=host, port=port)
-uvicorn.run(app, host=host, port=port)
+# uvicorn.run(app, host=host, port=port)
+try:
+    uvicorn.run(app, host="0.0.0.0", port=port)
+except KeyboardInterrupt:
+    print("stopped")
