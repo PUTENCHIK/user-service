@@ -25,7 +25,7 @@ def root():
 
 @app.get("/get_uuid")
 def get_uuid():
-    return message(service.create_uuid())
+    return {"uuid": service.create_uuid()}
 
 
 @app.get("/start")
