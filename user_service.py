@@ -11,8 +11,6 @@ from models.Subscriber import Subscriber
 
 app = FastAPI()
 service = UserService()
-publisher = None
-subscriber = None
 # router_name = "/userservice"
 
 
@@ -38,44 +36,34 @@ def start_without():
 @app.get("/start/{amount}")
 # @app.on_event("startup")
 def start(amount: int):
-    global publisher, subscriber
-    if publisher is None:
-        publisher = Publisher()
+    try:
+        publisher = Publisher(service.starts_amount)
+        service.logger.add_debug("Publisher object created")
+    except FastAPIError:
+        service.logger.add_error("Impossible to create Publisher")
+        return
 
-    if subscriber is None:
-        subscriber = Subscriber()
+    try:
+        subscriber = Subscriber(service.starts_amount)
+        service.logger.add_debug("Subscriber object created")
+    except FastAPIError:
+        service.logger.add_error("Impossible to create Publisher")
+        return
+
+    try:
+        subscriber.start()
         subscriber.subscribe()
+        # subscriber.simulate(0)
+        publisher.simulate(amount)
+    except:
+        service.logger.add_error("Simulation was stopped")
 
-    # subscriber.connect()
-    subscriber.start()
+    subscriber.stop()
 
-    publisher.simulate(amount)
-    # try:
-    #     publisher = Publisher()
-    #     service.logger.add_debug("Publisher object created")
-    # except FastAPIError:
-    #     service.logger.add_error("Impossible to create Publisher")
-    #     return
-    #
-    # try:
-    #     subscriber = Subscriber()
-    #     service.logger.add_debug("Subscriber object created")
-    # except FastAPIError:
-    #     service.logger.add_error("Impossible to create Publisher")
-    #     return
-    #
-    # try:
-    #     subscriber.start()
-    #     subscriber.subscribe()
-    #     # subscriber.simulate(0)
-    #     publisher.simulate(amount)
-    # except:
-    #     service.logger.add_error("Simulation was stopped")
-    #
-    # subscriber.stop()
-    #
-    # del publisher
-    # del subscriber
+    del publisher
+    del subscriber
+
+    service.starts_amount += 1
 
     return message("Simulation ended")
 
