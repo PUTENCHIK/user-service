@@ -10,6 +10,8 @@ from models.Subscriber import Subscriber
 class UserService:
     def __init__(self):
         self.logger = Logger("userservice")
+
+    def add(self):
         self.publisher = Publisher()
         self.logger.add_debug("Publisher created")
 
