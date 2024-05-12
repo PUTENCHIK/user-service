@@ -4,8 +4,8 @@ from src.config import config
 
 
 class Publisher(MyClient):
-    def __init__(self):
-        super(Publisher, self).__init__("publisher")
+    def __init__(self, number):
+        super(Publisher, self).__init__(f"publisher{number}")
         self.connect()
 
     def publish(self, text: str):
